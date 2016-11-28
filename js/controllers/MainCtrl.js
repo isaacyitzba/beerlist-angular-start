@@ -8,5 +8,5 @@ app.controller('MainCtrl',function($scope, beerService){
    $scope.removeBeer = function(index){
     beerService.removeBeer(index);
   }
-
+  $scope.ratings = [0,1,2,3,4,5]
 })
