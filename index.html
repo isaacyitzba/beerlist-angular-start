@@ -3,6 +3,7 @@
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="node_modules/angular/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
 
 </head>
 <body ng-app="beerList" ng-controller="MainCtrl">
@@ -14,33 +15,53 @@
 
       <!-- render beers here -->
 
-      <form ng-submit="addBeer()">
+      <form>
         <h3>Add a new beer</h3>
-
+      
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Beer Name" ng-model="name"></input>
+          <input type="text" class="form-control" placeholder="Beer Name" ng-model="newBeer.name"></input>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Style" ng-model="style"></input>
+          <input type="text" class="form-control" placeholder="Style" ng-model="newBeer.style"></input>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="ABV" ng-model="abv"></input>
+          <input type="text" class="form-control" placeholder="ABV" ng-model="newBeer.abv"></input>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Image URL" ng-model="image"></input>
+          <input type="text" class="form-control" placeholder="Image URL" ng-model="newBeer.image"></input>
         </div>
 
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button ng-click="addBeer()" type="button" class="btn btn-primary">Add</button>
       </form>
     </div>
   </div>
   
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div ng-repeat="beer in beers track by $index">
+           <div class="panel panel-default">
+
+               <div class="panel-heading"><strong>Beer:</strong>  
+               <a href="#" ng-click="removeBeer($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+               </div>
+               <div class="panel-body">
+              {{beer.name}} <br>
+              {{beer.style}} <br>
+              {{beer.abv}}<br>
+              <img ng-src="{{beer.image}}">
+              </div>
+            </div>
+
+          </div>
+          </div>
+      </div>
+
   <script src="js/app.js"></script>
-  <script src="js/services/beers.js"></script>
-  <script src="js/controllers/mainController.js"></script>
+  <script src="js/services/beerService.js"></script>
+  <script src="js/controllers/MainCtrl.js"></script>
 
 </body>
 </html>
