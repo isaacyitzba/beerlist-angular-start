@@ -14,10 +14,17 @@ app.factory('beerService',function(){
   var removeBeer = function(index){
     beers.splice(index,1);
   }
+  var sort = function(){
+    beers.sort(function (a, b) {
+      return a.rating-b.rating;
+  });
+};
+
 
   return {
     beers:beers,
     addBeer:addBeer,
-    removeBeer:removeBeer
+    removeBeer:removeBeer,
+    sort:sort
   };
 });

@@ -12,14 +12,13 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h1>BeerList</h1>
-      <div class="page-header">
-      </div>
+     <hr>
 
       <!-- render beers here -->
-      <button type="button" class="btn btn-primary">Sort Beers</button>
+      <button type="button" class="btn btn-primary" ng-click = "sort()" >Sort Beers</button>
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <div ng-repeat="beer in beers' track by $index">
+          <div ng-repeat="beer in beers track by $index">
            <div class="panel panel-default">
 
                <div class="panel-heading"><strong>Beer: {{beer.name}}</strong>  
@@ -59,7 +58,7 @@
         </div>
 
         <div class="form-group">
-          <select ng-init="newBeer.rating = newBeer.rating||ratings[0]"ng-model="newBeer.rating" ng-options ="x for x in ratings">
+          <select ng-init="newBeer.rating = newBeer.rating||ratings[0]" ng-model="newBeer.rating" ng-options ="x for x in ratings">
           </select>
         </div>
 
